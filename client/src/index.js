@@ -12,7 +12,7 @@ import axios from "axios";
 
 
 // axios.defaults.baseURL = 'http://localhost:3001';
-axios.defaults.baseURL = 'https://pidogsback-production-008e.up.railway.app/';
+axios.defaults.baseURL = 'https://proyectodogs-production.up.railway.app/';
 
 
 ReactDOM.render(
