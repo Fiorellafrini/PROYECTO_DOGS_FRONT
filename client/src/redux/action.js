@@ -34,7 +34,7 @@ export const getDetails = (id) => {
 
 export const getDogsName = (name) => {
   return function (dispatch) {
-    fetch(`http://localhost:3001/dogs?name=${name}`)
+    fetch(`/dogs?name=${name}`)
       .then((response) => response.json())
       .then((data) => dispatch({ type: SEARCH_DOGS_BY_NAME, payload: data }))
       .catch((error) => {
@@ -45,7 +45,7 @@ export const getDogsName = (name) => {
 
 export function getTemperaments() {
   return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/temperaments");
+    const response = await axios.get("/temperaments");
     return dispatch({
       type: GET_TEMPERAMENTS,
       payload: response.data,
@@ -80,7 +80,7 @@ export function filterByOrigin(payload) {
 
 export const createDog = (input) => {
   return async function (dispatch) {
-    const response = await axios.post(`http://localhost:3001/dogs/`, input);
+    const response = await axios.post(`/dogs/`, input);
     return dispatch({ type: CREATE_DOG, payload: response.data });
   };
 };
