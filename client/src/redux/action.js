@@ -12,14 +12,23 @@ import { FILTER_BY_ORIGIN } from "./action-types";
 import { CREATE_DOG } from "./action-types";
 import axios from "axios"; // si quiero traerme o pedir info del back a mi front voy a usar axios o fetch
 
+// export const getDogs = () => {
+//   return function (dispatch) {
+//     fetch(`/dogs/getAll`)
+//       // fetch("https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         return dispatch({ type: GET_DOGS, payload: data });
+//       });
+//   };
+// };
+
 export const getDogs = () => {
-  return function (dispatch) {
-    fetch(`/dogs/getAll`)
-      // fetch("https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ")
-      .then((response) => response.json())
-      .then((data) => {
-        return dispatch({ type: GET_DOGS, payload: data });
-      });
+  return async function (dispatch) {
+
+    const response = await axios("/dogs/getAll")
+   
+        return dispatch({ type: GET_DOGS, payload: response.data });
   };
 };
 
